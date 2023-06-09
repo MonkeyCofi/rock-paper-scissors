@@ -1,27 +1,69 @@
-/*
-    Get user input for move
-    Assign three variables: 1 for rock, 2 for paper, 3 for scissors
-    Randomly generate computer move
-*/
-
-/*
-    create computer move variable
-    use math.floor() to round down the value of:
-        (math.random() * 3) + 1 as there are 3 moves. Add 1 because math.random counts 0 as the start
-    return this value
-*/
 const start = document.querySelector('.start');
-const rock = 1;
-const paper = 2;
-const scissors = 3;
+const rock = 'rock';
+const paper = 'paper';
+const scissors = 'scissors';
 
+// Get the player's move and return it in lowercase
 function playerMove() {
     let playerMove;
     playerMove = prompt("enter your move");
-    return playerMove;
+    return playerMove.toLowerCase();
 }
 
 function computerMove() {
-    let computerMove = Math.floor((Math.random() * 3) + 1);
+    let randomNumber = Math.floor((Math.random() * 3) + 1);
+    let computerMove = ''
+    if (randomNumber === 1) {
+        computerMove = 'rock';
+    } else if (randomNumber === 2) {
+        computerMove = 'paper'
+    } else {
+        computerMove = 'scissors'
+    }
     return computerMove;
 }
+
+/* 
+    Get both user and computer moves and store in a variable
+    
+*/
+function playRound(playerMove, computerMove) {
+    playerMove = playerMove()
+    computerMove = computerMove()
+    // rock
+    if (playerMove === rock){
+        if (computerMove === rock){
+            return `It's a tie`
+        } else if (computerMove === paper){
+            return `You lose. Computer chose paper`
+        } else if (computerMove === scissors){
+            return `You win. Computer chose scissors`
+        }
+    // Paper
+    } else if (playerMove === paper){
+        if (computerMove === rock){
+            return `You win. Computer chose rock`
+        } else if (computerMove === paper){
+            return `It's a tie`
+        } else if (computerMove === scissors){
+            return `You lose. Computer chose scissors`
+        }
+    // Scissors
+    } else {
+        if (computerMove === rock){
+            return `You lose. Computer chose rock`
+        } else if (computerMove === paper){
+            return `You win. Computer chose paper`
+        } else if (computerMove === scissors){
+            return `It's a tie`
+        }
+    }
+}
+
+function game(playerMove, computerMove) {
+    let wins = losses = draws = 0;
+}
+
+start.addEventListener('click', ()=> {
+    console.log(playRound(playerMove, computerMove));
+})

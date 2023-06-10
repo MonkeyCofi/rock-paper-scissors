@@ -11,7 +11,7 @@ const loss = 'You lose.'
 // Get the player's move and return it in lowercase
 function playerMove() {
     let playerMove;
-    playerMove = prompt("enter your move");
+    playerMove = prompt("Enter your move");
     return playerMove.toLowerCase();
 }
 
@@ -64,38 +64,40 @@ function playRound(playerMove, computerMove) {
 
     if (playerMove === rock){
         if (computerMove === rock){
-            return tie;
+            result = tie;
+            return result + ` Computer picked ${computerMove}`;
         } else if (computerMove === paper){
-            return loss;
+            result = loss;
+            return result + ` Computer picked ${computerMove}`;
         } else {
-            return win;
+            result = win;
+            return result + ` Computer picked ${computerMove}`;
         }
     } else if (playerMove === paper){
         if (computerMove === rock){
-            return win;
+            result = win;
+            return result + ` Computer picked ${computerMove}`;
         } else if (computerMove === paper){
-            return tie;
+            result = tie;
+            return result + ` Computer picked ${computerMove}`;
         } else {
-            return loss;
+            result = loss;
+            return result + ` Computer picked ${computerMove}`;
         }
     } else if (playerMove === scissors){
         if (computerMove === rock){
-            return loss
+            result = loss;
+            return result + ` Computer picked ${computerMove}`;
         } else if (computerMove === paper){
-            return win;
+            result = win;
+            return result + ` Computer picked ${computerMove}`;
         } else {
-            return tie;
+            result = tie;
+            return result + ` Computer picked ${computerMove}`;
         }
-    }
-}
-
-function game(playerMove, computerMove) {
-    let wins = losses = draws = 0;
-    for (let rounds = 1; rounds <= 5; rounds++) {
-
     }
 }
 
 start.addEventListener('click', ()=> {
-    alert(playRound(playerMove, computerMove));
+    console.log(playRound(playerMove, computerMove))    
 })

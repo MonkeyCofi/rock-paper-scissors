@@ -1,15 +1,24 @@
 .buttons {
     display: flex;
     justify-content: space-around;
-    background-color: bisque;
+    background-color: #ffe4c4;
 }
 
 .buttons > div{
     border: 2px solid black;
     cursor: pointer;
+    transition: all 0.09s ease-in;
+}
+
+.buttons > div:hover {
+    background-color: #ffd4c4;
 }
 
 .buttons img{
-    width: 70px;
-    height: 90px;
+    width: 100px;
+    height: 110px;
+}
+
+.text-scenter {
+    text-align: center;
 }

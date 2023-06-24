@@ -1,3 +1,15 @@
-* {
-    background-color: red;
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    background-color: bisque;
+}
+
+.buttons > div{
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.buttons img{
+    width: 70px;
+    height: 90px;
 }

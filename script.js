@@ -101,16 +101,42 @@ function computerMove(){
 // select the buttons
 const rps = document.querySelectorAll('.buttons div');
 // select the results div
-const result = document.querySelector('.results');
+const resultContainer = document.querySelector('.results');
+const result = document.createElement('p');
 
 // select each button
 rps.forEach(button => button.addEventListener('click', ()=>{
     const playerMove = button.id;
     const compMove = computerMove();
-    const result = '';
-    // draw
-    if (playerMove === compMove){
-        result = `It's a tie`;
+    result.innerText = '';
+    // if computer picked rock
+    if (playerMove === 'rock'){
+        if (compMove === 'rock'){
+            result.innerText = `It's a tie`;
+        } else if (compMove === 'paper'){
+            result.innerText = `You win. Computer picked ${compMove}`;
+        } else{
+            result.innerText = `You lose. Computer picked ${compMove}`;
+        }
+    // If computer picked paper
+    } else if (playerMove === 'paper'){
+        if (compMove === 'rock'){
+            result.innerText = `You lose. Computer picked ${compMove}`;
+        } else if (compMove === 'paper'){
+            result.innerText = `It's a tie`;
+        } else {
+            result.innerText = `You win. Computer picked ${compMove}`;
+        }
+    // If computer picked scissors
+    } else {
+        if (compMove === 'rock'){
+            result.innerText = `You win. Computer picked ${compMove}`;
+        } else if (compMove === 'paper'){
+            result.innerText = `You lose. Computer picked ${compMove}`;
+        } else {
+            result.innerText = `It's a tie`;
+        }
     }
-
+    console.log(`Your move: ${playerMove}\n Computer move: ${compMove}`);
+    resultContainer.appendChild(result);
 }))

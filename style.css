@@ -22,3 +22,11 @@
 .text-scenter {
     text-align: center;
 }
+
+.results {
+    display: flex;
+    background-color: coral;
+    width: auto;
+    height: auto;
+    justify-content: center;
+}

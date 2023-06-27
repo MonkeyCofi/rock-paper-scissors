@@ -1,13 +1,26 @@
+body {
+    background-color: #67530b;
+}
+
+/* buttons selector */
 .buttons {
     display: flex;
     justify-content: space-around;
-    background-color: #ffe4c4;
+    margin-top: 30px;
 }
 
+/* style for each individual item */
 .buttons > div{
-    border: 2px solid black;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     transition: all 0.09s ease-in;
+    background-color: #AAAD10;
+    /* box shadow for moves */
+    box-shadow: 0 2px 10px #AAAD10;
 }
 
 .buttons > div:hover {
@@ -19,14 +32,23 @@
     height: 110px;
 }
 
-.text-scenter {
-    text-align: center;
-}
 
 .results {
     display: flex;
     background-color: coral;
-    width: auto;
+    width: 50%;
     height: auto;
     justify-content: center;
+    margin-top: 30px;
+}
+
+/* pick move box */
+.pick_move{
+    width: 300px;
+    height: 80px;
+    background-color: red;
+}
+
+.text-center {
+    text-align: center;
 }

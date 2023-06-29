@@ -110,37 +110,8 @@ rps.forEach(button => button.addEventListener('click', ()=>{
     const playerMove = button.id;
     const compMove = computerMove();
     result.innerText = returnResult(playerMove, compMove);
-    // if player picked rock
-    // if (playerMove === 'rock'){
-    //     if (compMove === 'rock'){
-    //         result.innerText = `It's a tie`;
-    //     } else if (compMove === 'paper'){
-    //         result.innerText = `You lose. Computer picked ${compMove}`;
-    //     } else{
-    //         result.innerText = `You win. Computer picked ${compMove}`;
-    //     }
-    // // If player picked paper
-    // } else if (playerMove === 'paper'){
-    //     if (compMove === 'rock'){
-    //         result.innerText = `You lose. Computer picked ${compMove}`;
-    //     } else if (compMove === 'paper'){
-    //         result.innerText = `It's a tie`;
-    //     } else {
-    //         result.innerText = `You win. Computer picked ${compMove}`;
-    //     }
-    // // If player picked
-    // } else {
-    //     if (compMove === 'rock'){
-    //         result.innerText = `You win. Computer picked ${compMove}`;
-    //     } else if (compMove === 'paper'){
-    //         result.innerText = `You lose. Computer picked ${compMove}`;
-    //     } else {
-    //         result.innerText = `It's a tie`;
-    //     }
-    // }
-    console.log(`Your move: ${playerMove}\nComputer move: ${compMove}`)
     resultContainer.appendChild(result);
-}))
+}));
 
 function returnResult(player, computer){
     let result = '';

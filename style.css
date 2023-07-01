@@ -41,7 +41,7 @@ h1 {
 }
 
 
-.results {
+.result {
     display: flex;
     background-color: coral;
     width: 50%;
@@ -49,10 +49,12 @@ h1 {
     justify-content: center;
     align-items: center;
     margin-top: 12%;
+    width: 500px;
+    font-size: 20px;
 }
 
 /* pick move box */
-.pick_move, .results{
+.pick_move, .result{
     width: 300px;
     height: 80px;
     background-color: #A18319;
@@ -61,18 +63,13 @@ h1 {
     margin: 5%;
 }
 
-.pick-move-container, .results-container {
+.pick-move-container, .result-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.results {
-    width: 500px;
-    font-size: 30px;
-}
-
-/* results modal styles */
+/* results and results modal styles */
 .modal-container {
     display: flex;
     position: fixed;
@@ -84,9 +81,16 @@ h1 {
 }
 
 .modal {
-    height: 150px;
-    width: 350px;
+    height: 200px;
+    width: 400px;
     background-color: #c8a529;
+}
+
+.results {
+    list-style-type: none;
+    margin: auto;
+    padding: 0 10px;
+    font-size: 18px;
 }
 
 /* new modifications to body to accomodate for footer */

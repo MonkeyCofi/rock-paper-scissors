@@ -63,7 +63,7 @@ function returnResult(player, computer){
 // select the buttons
 const rps = document.querySelectorAll('.buttons div');
 // select the results div
-const resultContainer = document.querySelector('.results');
+const resultContainer = document.querySelector('.result');
 // create p element to display result of current round
 const result = document.createElement('p');
 
@@ -88,9 +88,12 @@ rps.forEach(button => button.addEventListener('click', ()=>{
     initialize a counter variable
     
     if round < 5, record the winner of each round
-        use an array to record the winner
+        initialize a winners array
         append the winner to the array after each round
-    Once round === 5, print the overall results
+    Once round === 5
+        toggle the hidden class for the modal
+        append the results into the modal
+        
     reset the round counter and the winners array 
 
 */

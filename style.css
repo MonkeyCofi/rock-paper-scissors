@@ -4,6 +4,7 @@
 
 body {
     background-color: #67530b;
+    margin: auto;
 }
 
 h1 {
@@ -69,7 +70,7 @@ h1 {
     align-items: center;
 }
 
-/* results and results modal styles */
+/* modal and inner content styles */
 .modal-container {
     display: flex;
     position: fixed;
@@ -78,12 +79,15 @@ h1 {
     justify-content: center;
     align-items: center;
     background-color: rgba(40, 40, 40, 0.7);
+    box-shadow: 10px 10px 50px 0 black;
 }
 
 .modal {
     height: 200px;
     width: 400px;
     background-color: #c8a529;
+    /* shadows */
+    box-shadow: 10px 10px 50px 0 black;
 }
 
 .results {
@@ -91,6 +95,10 @@ h1 {
     margin: auto;
     padding: 0 10px;
     font-size: 18px;
+}
+
+.reset {
+    cursor: pointer;
 }
 
 /* new modifications to body to accomodate for footer */

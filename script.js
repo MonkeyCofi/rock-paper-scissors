@@ -1,27 +1,19 @@
-// Select the start button
-const start = document.querySelector('.start');
-
-// 3 moves
+// // 3 moves
 const rock = 'rock';
 const paper = 'paper';
 const scissors = 'scissors';
 
 // Game statuses
-const win = 'You win';
-const loss = 'You lose';
-const draw = `It's a draw`;
+const win = 'You win. ';
+const loss = 'You lose. ';
+const draw = `It's a draw.`;
 
-function playerMove(){
-    let playerMove = ''
-    while (playerMove === '' || playerMove === null){
-        playerMove = prompt("Enter your move");
-    }
-    return playerMove.toLowerCase();
-}
-
+// compute the computer move
 function computerMove(){
     let computerMove = ''
+    // get random number between 1 and 3
     let randomNumber = Math.floor((Math.random() * 3) + 1);
+    // assign each move with numbers 1 through 3
     if (randomNumber === 1){
         computerMove = 'rock';
     } else if (randomNumber === 2){
@@ -31,67 +23,72 @@ function computerMove(){
     }
     return computerMove;
 }
+// function to get the result of the current round
+function returnResult(player, computer){
+    let result = '';
+    let computerMove = `Computer picked ${computer}`;
+    // if statements for what player picked
 
-function playRound(playerMove, computerMove){
-    // Player and computer moves
-    let player = playerMove();
-    let computer = computerMove();
-    // Object that stores the result and the computer move
-    let round = {
-        result: '',
-        compMove: ''
-    }
-    round.compMove = computer;
-    // if player picks rock
+    // rock
     if (player === rock){
         if (computer === rock){
-            round.result = draw;
+            result = draw;
         } else if (computer === paper){
-            round.result = loss;
-        } else if (computer === scissors){
-            round.result = win;
+            result = loss + computerMove;
+        } else{
+            result = win + computerMove;
         }
+    // paper
     } else if (player === paper){
         if (computer === rock){
-            round.result = win;
+            result = win + computerMove;
         } else if (computer === paper){
-            round.result = draw;
-        } else if (computer === scissors){
-            round.result = loss;
+            result = draw;
+        } else{
+            result = loss + computerMove;
         }
-    } else if (player === scissors) {
+    // scissors
+    } else {
         if (computer === rock){
-            round.result = loss;
+            result = loss + computerMove;
         } else if (computer === paper){
-            round.result = win;
-        } else if (computer === scissors){
-            round.result = draw;
+            result = win + computerMove;
+        } else{
+            result = draw;
         }
     }
-    // return the object
-    return round;
+    return result;
 }
 
-function playGame(){
-    // Variables for the wins, draws and losses
-    let wins = draws = losses = 0;
-    for (let i = 0; i < 5; i++){
-        // currentGame object
-        let currentGame = playRound(playerMove, computerMove);
-        // Evaluate the game status and update wins, draws and losses accordingly
-        if (currentGame.result === win){
-            wins+=1;
-        } else if (currentGame.result === draw){
-            draws+=1;
-        } else if (currentGame.result === loss){
-            losses+=1;
-        }
-        // Alert currentGame status and indicate computer move
-        alert(`${currentGame.result}. Computer picked ${currentGame.compMove}\nWins: ${wins} Draws: ${draws} Losses: ${losses}`)
-    }
-    return `Here are the overall results:\nWins: ${wins} Draws: ${draws} Losses: ${losses}`;
-}
+// select the buttons
+const rps = document.querySelectorAll('.buttons div');
+// select the results div
+const resultContainer = document.querySelector('.results');
+// create p element to display result of current round
+const result = document.createElement('p');
 
-start.addEventListener('click', ()=>{
-    alert(playGame())
-})
+let round = 0;
+// array to record the winners per round
+let winners = [];
+
+
+// select each button
+rps.forEach(button => button.addEventListener('click', ()=>{
+    // base the player move on the id of the button pressed
+    const playerMove = button.id;
+    // call computer move and store it in variable
+    const compMove = computerMove();
+    
+    result.innerText = returnResult(playerMove, compMove);
+    // append result to the container
+    resultContainer.appendChild(result);
+}));
+
+/*  
+    initialize a counter variable
+    
+    if i < 5, record the winner of each round
+        use an array
+
+*/
+

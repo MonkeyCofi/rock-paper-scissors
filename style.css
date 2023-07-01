@@ -1,0 +1,77 @@
+* {
+    font-weight: lighter;
+}
+
+body {
+    background-color: #67530b;
+}
+
+h1 {
+    font-size: 70px;
+    margin: auto;
+}
+
+/* buttons selector */
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* style for each individual item */
+.buttons > div{
+    width: 220px;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.09s ease-in;
+    background-color: #c8a529;
+    /* box shadow for moves */
+    box-shadow: -2px -2px 4px black inset;
+}
+
+.buttons > div:hover {
+    background-color: #ffd4c4;
+}
+
+.buttons img{
+    width: 100px;
+    height: 110px;
+}
+
+
+.results {
+    display: flex;
+    background-color: coral;
+    width: 50%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12%;
+}
+
+/* pick move box */
+.pick_move, .results{
+    width: 300px;
+    height: 80px;
+    background-color: #A18319;
+    border-radius: 6px;
+    box-shadow: -2px -2px 4px black inset;
+    margin: 5%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.pick-move-container, .results-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.results {
+    width: 500px;
+    font-size: 30px;
+}

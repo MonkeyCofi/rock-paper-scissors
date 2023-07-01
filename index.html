@@ -4,13 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <h1 style="text-align: center;">Welcome to Rock Paper Scissors</h1>
-    <h3>Pressing start will start a Rock Paper Scissors game consisting of 5 rounds</h3>
-    <p>This game is entirely played on the console</p>
-    <button class="start">Start</button>
+    <!-- Source for rock paper scissors logo: 
+    https://www.flaticon.com/free-icon/rock-paper-scissors_6727632?term=rock+paper+scissors&page=1&position=7&origin=search&related_id=6727632 -->
+    
+    <h1 class="text-center">Rock Paper Scissors</h1>
+
+
+    <div class="pick-move-container">
+        <div class='pick_move'>
+            <h2 class="text-center">Pick your move</h2>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+        <div id="rock">
+            <img src="Rock_v2.png">
+        </div>
+
+        <div id="paper">
+            <img src="Paper.png">
+        </div>
+
+        <div id="scissors">
+            <img src="Scissors.png">
+        </div>
+    </div>
+
+    <div class="results-container">
+        <div class="results"></div>
+    </div>
+
+
     <script src="script.js"></script>
 </body>
 </html>

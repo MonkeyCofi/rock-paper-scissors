@@ -61,10 +61,6 @@ h1 {
     margin: 5%;
 }
 
-.text-center {
-    text-align: center;
-}
-
 .pick-move-container, .results-container {
     display: flex;
     justify-content: center;
@@ -78,15 +74,6 @@ h1 {
 
 /* results modal styles */
 .modal-container {
-    /* background-color: red;
-    height: 300px;
-    width: 300px;
-    margin-right: -50%;
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    z-index: 0;  */
     display: flex;
     position: fixed;
     height: 100%;
@@ -97,8 +84,9 @@ h1 {
 }
 
 .modal {
-    margin: 0;
-    background-color: #A18319;
+    height: 150px;
+    width: 350px;
+    background-color: #c8a529;
 }
 
 /* new modifications to body to accomodate for footer */
@@ -107,6 +95,11 @@ body {
     flex-direction: column;
 }
 
+/* utility classes */
 .hidden {
     display: none !important;
+}
+
+.text-center {
+    text-align: center;
 }

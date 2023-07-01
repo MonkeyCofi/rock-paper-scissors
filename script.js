@@ -87,8 +87,11 @@ rps.forEach(button => button.addEventListener('click', ()=>{
 /*  
     initialize a counter variable
     
-    if i < 5, record the winner of each round
-        use an array
+    if round < 5, record the winner of each round
+        use an array to record the winner
+        append the winner to the array after each round
+    Once round === 5, print the overall results
+    reset the round counter and the winners array 
 
 */
 

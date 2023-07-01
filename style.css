@@ -41,34 +41,36 @@ h1 {
     height: 110px;
 }
 
-
-.result {
+/* Pick move and result containers  */
+.pick-move-container, .result-container {
     display: flex;
-    background-color: coral;
-    width: 50%;
-    height: auto;
     justify-content: center;
     align-items: center;
-    margin-top: 12%;
-    width: 500px;
-    font-size: 20px;
 }
 
-/* pick move box */
+/* pick move box and result  */
 .pick_move, .result{
-    width: 300px;
-    height: 80px;
     background-color: #A18319;
     border-radius: 6px;
     box-shadow: -2px -2px 4px black inset;
     margin: 5%;
 }
 
-.pick-move-container, .result-container {
+.result {
     display: flex;
+    height: 80px;
     justify-content: center;
     align-items: center;
+    width: 500px;
+    font-size: 30px;
 }
+
+.pick_move {
+    width: 300px;
+    height: 80px;
+}
+
+
 
 /* modal and inner content styles */
 .modal-container {

@@ -1,3 +1,18 @@
+// select the buttons
+const rps = document.querySelectorAll('.buttons div');
+// select the results div
+const resultContainer = document.querySelector('.result');
+// create p element to display result of current round
+const result = document.createElement('p');
+
+// select the modal
+const modal = document.querySelector('.modal-container');
+// select the results list
+const results = document.querySelector('.results');
+// select the reset button
+const reset = document.querySelector('.reset');
+
+
 // // 3 moves
 const rock = 'rock';
 const paper = 'paper';
@@ -8,6 +23,12 @@ const win = 'You win. ';
 const loss = 'You lose. ';
 const draw = `It's a draw.`;
 
+// variable to keep track of the rounds
+let round = 1;
+// array to record the winners per round
+let winners = [];
+// variable for final round
+const FINAL_ROUND = 5;
 // compute the computer move
 function computerMove(){
     let computerMove = ''
@@ -26,7 +47,7 @@ function computerMove(){
 // function to get the result of the current round
 function returnResult(player, computer){
     let result = '';
-    let computerMove = `Computer picked ${computer}`;
+    let computerMove = ` Computer picked ${computer}`;
     // if statements for what player picked
 
     // rock
@@ -34,61 +55,105 @@ function returnResult(player, computer){
         if (computer === rock){
             result = draw;
         } else if (computer === paper){
-            result = loss + computerMove;
+            // result = loss + computerMove;
+            result = loss;
         } else{
-            result = win + computerMove;
+            // result = win + computerMove;
+            result = win;
         }
     // paper
     } else if (player === paper){
         if (computer === rock){
-            result = win + computerMove;
+            // result = win + computerMove;
+            result = win
         } else if (computer === paper){
             result = draw;
         } else{
-            result = loss + computerMove;
+            // result = loss + computerMove;
+            result = loss;
         }
     // scissors
     } else {
         if (computer === rock){
-            result = loss + computerMove;
+            // result = loss + computerMove;
+            result = loss;
         } else if (computer === paper){
-            result = win + computerMove;
+            // result = win + computerMove;
+            result = win;
         } else{
             result = draw;
         }
     }
-    return result;
+    winners.push(result);
+    return result + computerMove;
 }
 
-// select the buttons
-const rps = document.querySelectorAll('.buttons div');
-// select the results div
-const resultContainer = document.querySelector('.results');
-// create p element to display result of current round
-const result = document.createElement('p');
-
-let round = 0;
-// array to record the winners per round
-let winners = [];
-
-
 // select each button
+// rps.forEach(button => button.addEventListener('click', ()=>{
+//     let winner = document.createElement('li');
+//     const playerMove = button.id;
+//     const compMove = computerMove();
+//     result.innerText = returnResult(playerMove, compMove);
+//     // append result to the container
+//     resultContainer.appendChild(result);
+//     ++round;
+// }));
+
 rps.forEach(button => button.addEventListener('click', ()=>{
-    // base the player move on the id of the button pressed
-    const playerMove = button.id;
-    // call computer move and store it in variable
-    const compMove = computerMove();
-    
-    result.innerText = returnResult(playerMove, compMove);
-    // append result to the container
-    resultContainer.appendChild(result);
+    let winner = document.createElement('li');
+    const currentRound = `Round ${round}: `;
+    if (round < FINAL_ROUND){
+        let playerMove = button.id;
+        let compMove = computerMove();
+        result.innerText = returnResult(playerMove, compMove);
+        // append result to the container
+        resultContainer.appendChild(result);
+
+        // conditions for modal popup
+        if (winners[round-1] === win){
+            winner.innerHTML = currentRound + `Player won`;
+        } else if (winners[round-1] === loss){
+            winner.innerHTML = currentRound + `Computer won`;
+        } else {
+            winner.innerHTML = currentRound + `It's a draw`;
+        }
+        // append the results to the modal
+        results.appendChild(winner);
+        // increment the round
+        round++;
+    } else {
+        // edge case for the last round
+        if (winners[FINAL_ROUND - 2] === win){
+            winner.innerHTML = currentRound + `Player won`;
+        } else if (winners[FINAL_ROUND - 2] === loss){
+            winner.innerHTML = currentRound + `Computer won`;
+        } else {
+            winner.innerHTML = currentRound + `It's a draw`;
+        };
+        results.appendChild(winner);
+        // unhide the modal
+        modal.classList.remove('hidden');
+        // reset round count to 1
+        round = 1;
+        // empty the winners array
+        winners = [];
+    }
+
 }));
 
-/*  
-    initialize a counter variable
-    
-    if i < 5, record the winner of each round
-        use an array
+// hide modal when reset button is pressed
+reset.addEventListener('click', ()=>{
+    modal.classList.add('hidden');
+    /* 
+        when play again is hit, remove all the results from the results list
+        ignore the first child of nodes, as it is a header
+        start selection from the second child of ul.results
 
-*/
-
+        while childNodes[1] of results is not NULL
+            remove results childNodes
+            next childNode will automatically be set to childNode[1]
+    */
+    while(results.childNodes[1]){
+        results.removeChild(results.childNodes[1]);
+    }
+});

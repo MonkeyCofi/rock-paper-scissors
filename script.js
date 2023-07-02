@@ -28,7 +28,7 @@ let round = 1;
 // array to record the winners per round
 let winners = [];
 // variable for final round
-const FINAL_ROUND = 5;
+let FINAL_ROUND = 5;
 // compute the computer move
 function computerMove(){
     let computerMove = ''
@@ -119,9 +119,12 @@ rps.forEach(button => button.addEventListener('click', ()=>{
         }
         // append the results to the modal
         results.appendChild(winner);
+        console.log(round);
         // increment the round
-        round++;
+        round+=1;
     } else {
+        // add to the round
+        round++;
         // edge case for the last round
         if (winners[FINAL_ROUND - 2] === win){
             winner.innerHTML = currentRound + `Player won`;
@@ -138,7 +141,6 @@ rps.forEach(button => button.addEventListener('click', ()=>{
         // empty the winners array
         winners = [];
     }
-
 }));
 
 // hide modal when reset button is pressed

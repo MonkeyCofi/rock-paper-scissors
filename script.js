@@ -23,10 +23,11 @@ const loss = 'You lose. ';
 const draw = `It's a draw.`;
 
 // variable to keep track of the rounds
-let round = 0;
+let round = 1;
 // array to record the winners per round
 let winners = [];
-
+// variable for final round
+const FINAL_ROUND = 5;
 // compute the computer move
 function computerMove(){
     let computerMove = ''
@@ -87,58 +88,56 @@ function returnResult(player, computer){
 }
 
 // select each button
+// rps.forEach(button => button.addEventListener('click', ()=>{
+//     let winner = document.createElement('li');
+//     const playerMove = button.id;
+//     const compMove = computerMove();
+//     result.innerText = returnResult(playerMove, compMove);
+//     // append result to the container
+//     resultContainer.appendChild(result);
+//     ++round;
+// }));
+
 rps.forEach(button => button.addEventListener('click', ()=>{
     let winner = document.createElement('li');
-    if (round < 4){
+    if (round < FINAL_ROUND){
         const playerMove = button.id;
         const compMove = computerMove();
         result.innerText = returnResult(playerMove, compMove);
         // append result to the container
         resultContainer.appendChild(result);
-        // create a list element to accomodate for each round's winner
-        /* Code below needs rework */
-        if (winners[round] === win){
-            winner.innerHTML = 'Player';
-        } else if (winners[round] === loss){
-            winner.innerHTML = 'Computer';
+        // conditions for modal
+        if (winners[round-1] === win){
+            winner.innerHTML = 'Player won';
+        } else if (winners[round-1] === loss){
+            winner.innerHTML = 'Computer won';
         } else {
-            winner.innerHTML = 'Draw';
+            winner.innerHTML = `It's a draw`;
         }
         results.appendChild(winner);
-    } else if (round === 4){
-        if (winners[4] === win){
-            winner.innerHTML = 'Player';
-        } else if (winners[4] === loss){
-            winner.innerHTML = 'Computer';
+        console.log(results.childNodes);
+        ++round;
+    } else {
+        if (winners[FINAL_ROUND - 2] === win){
+            winner.innerHTML = 'Player won';
+        } else if (winners[FINAL_ROUND - 2] === loss){
+            winner.innerHTML = 'Computer won';
         } else {
-            winner.innerHTML = 'Draw';
+            winner.innerHTML = `It's a draw`;
         }
-        // unhide the modal
+        results.appendChild(winner);
         modal.classList.remove('hidden');
-        result.innerText = '';
-        round = 0;
+        round = 1;
     }
-    /* Code above needs rework */
-    console.log(winners[round]);
-    round+=1;
+
 }));
 
 // hide modal when reset button is pressed
 reset.addEventListener('click', ()=>{
     modal.classList.add('hidden');
-})
-
-/*  
-    initialize a counter variable
-    
-    if round < 5, record the winner of each round
-        initialize a winners array
-        append the winner to the array after each round
-    Once round === 5
-        toggle the hidden class for the modal
-        append the results into the modal
-        
-    reset the round counter and the winners array 
-
-*/
-
+    /* 
+        when play again is hit, remove all the results from the results list
+        ignore the first child of nodes, as it is a header
+        start selection from the second child of ul.results
+    */
+});

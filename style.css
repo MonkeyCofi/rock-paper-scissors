@@ -85,7 +85,7 @@ h1 {
 }
 
 .modal {
-    height: 200px;
+    height: 210px;
     width: 400px;
     background-color: #c8a529;
     /* shadows */
@@ -101,6 +101,22 @@ h1 {
 
 .reset {
     cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    border-radius: 4px;
+    box-shadow: -3px 3px 6px black;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #2bca28;
+    border: 1px solid;
+    transition: all 0.3s;
+}
+
+.reset:hover {
+    background-color: #1c841a;
+    box-shadow: 1.5px 5px 12px black;
+    font-size: 20px;
 }
 
 /* new modifications to body to accomodate for footer */

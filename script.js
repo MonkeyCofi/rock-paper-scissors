@@ -119,13 +119,13 @@ rps.forEach(button => button.addEventListener('click', ()=>{
         }
         // append the results to the modal
         results.appendChild(winner);
-        console.log(round);
         // increment the round
         round+=1;
     } else {
         // add to the round
         round++;
         // edge case for the last round
+        // use winners[FINAL_ROUND - 2] to get the last round's result
         if (winners[FINAL_ROUND - 2] === win){
             winner.innerHTML = currentRound + `Player won`;
         } else if (winners[FINAL_ROUND - 2] === loss){

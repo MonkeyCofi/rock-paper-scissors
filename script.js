@@ -4,6 +4,7 @@ const rps = document.querySelectorAll('.buttons div');
 const resultContainer = document.querySelector('.result');
 // create p element to display result of current round
 const result = document.createElement('p');
+
 // select the modal
 const modal = document.querySelector('.modal-container');
 // select the results list
@@ -100,34 +101,42 @@ function returnResult(player, computer){
 
 rps.forEach(button => button.addEventListener('click', ()=>{
     let winner = document.createElement('li');
+    const currentRound = `Round ${round}: `;
     if (round < FINAL_ROUND){
-        const playerMove = button.id;
-        const compMove = computerMove();
+        let playerMove = button.id;
+        let compMove = computerMove();
         result.innerText = returnResult(playerMove, compMove);
         // append result to the container
         resultContainer.appendChild(result);
-        // conditions for modal
+
+        // conditions for modal popup
         if (winners[round-1] === win){
-            winner.innerHTML = 'Player won';
+            winner.innerHTML = currentRound + `Player won`;
         } else if (winners[round-1] === loss){
-            winner.innerHTML = 'Computer won';
+            winner.innerHTML = currentRound + `Computer won`;
         } else {
-            winner.innerHTML = `It's a draw`;
+            winner.innerHTML = currentRound + `It's a draw`;
         }
+        // append the results to the modal
         results.appendChild(winner);
-        console.log(results.childNodes);
-        ++round;
+        // increment the round
+        round++;
     } else {
+        // edge case for the last round
         if (winners[FINAL_ROUND - 2] === win){
-            winner.innerHTML = 'Player won';
+            winner.innerHTML = currentRound + `Player won`;
         } else if (winners[FINAL_ROUND - 2] === loss){
-            winner.innerHTML = 'Computer won';
+            winner.innerHTML = currentRound + `Computer won`;
         } else {
-            winner.innerHTML = `It's a draw`;
-        }
+            winner.innerHTML = currentRound + `It's a draw`;
+        };
         results.appendChild(winner);
+        // unhide the modal
         modal.classList.remove('hidden');
+        // reset round count to 1
         round = 1;
+        // empty the winners array
+        winners = [];
     }
 
 }));
@@ -139,5 +148,12 @@ reset.addEventListener('click', ()=>{
         when play again is hit, remove all the results from the results list
         ignore the first child of nodes, as it is a header
         start selection from the second child of ul.results
+
+        while childNodes[1] of results is not NULL
+            remove results childNodes
+            next childNode will automatically be set to childNode[1]
     */
+    while(results.childNodes[1]){
+        results.removeChild(results.childNodes[1]);
+    }
 });

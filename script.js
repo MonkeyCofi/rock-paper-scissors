@@ -29,6 +29,7 @@ let round = 1;
 let winners = [];
 // variable for final round
 let FINAL_ROUND = 5;
+
 // compute the computer move
 function computerMove(){
     let computerMove = ''
@@ -88,17 +89,6 @@ function returnResult(player, computer){
     return result + computerMove;
 }
 
-// select each button
-// rps.forEach(button => button.addEventListener('click', ()=>{
-//     let winner = document.createElement('li');
-//     const playerMove = button.id;
-//     const compMove = computerMove();
-//     result.innerText = returnResult(playerMove, compMove);
-//     // append result to the container
-//     resultContainer.appendChild(result);
-//     ++round;
-// }));
-
 rps.forEach(button => button.addEventListener('click', ()=>{
     let winner = document.createElement('li');
     const currentRound = `Round ${round}: `;
@@ -122,18 +112,24 @@ rps.forEach(button => button.addEventListener('click', ()=>{
         // increment the round
         round+=1;
     } else {
-        // add to the round
-        round++;
-        // edge case for the last round
-        // use winners[FINAL_ROUND - 2] to get the last round's result
-        if (winners[FINAL_ROUND - 2] === win){
+        // Last round edge case
+        let playerMove = button.id;
+        let compMove = computerMove();
+        result.innerText = returnResult(playerMove, compMove);
+        // append result to the container
+        resultContainer.appendChild(result);
+        // append the results to the modal
+        results.appendChild(winner);
+        
+        if (winners[FINAL_ROUND - 1] === win){
             winner.innerHTML = currentRound + `Player won`;
-        } else if (winners[FINAL_ROUND - 2] === loss){
+        } else if (winners[FINAL_ROUND - 1] === loss){
             winner.innerHTML = currentRound + `Computer won`;
         } else {
             winner.innerHTML = currentRound + `It's a draw`;
         };
         results.appendChild(winner);
+
         // unhide the modal
         modal.classList.remove('hidden');
         // reset round count to 1
@@ -157,5 +153,9 @@ reset.addEventListener('click', ()=>{
     */
     while(results.childNodes[1]){
         results.removeChild(results.childNodes[1]);
-    }
+    };
+    // remove the result text 
+    result.innerText = '';
 });
+
+// need to fix bug where last result is the same as second last result
